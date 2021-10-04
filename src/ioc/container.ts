@@ -135,10 +135,6 @@ export class CleanContainer {
     moduleRef.addController(controller);
   }
 
-  public clear() {
-    this.modules.clear();
-  }
-
   public replace(toReplace: string | symbol, options: string | symbol & { scope: string[] | null }) {
     this.modules.forEach(moduleRef => moduleRef.replace(toReplace, options));
   }

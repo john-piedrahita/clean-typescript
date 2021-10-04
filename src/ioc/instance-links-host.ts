@@ -3,17 +3,9 @@ import {CleanContainer} from './container';
 import {InstanceWrapper} from './instance-wrapper';
 import {Module} from './module';
 import {isFunction} from '../utils';
-import {IAbstract, Type} from "../contracts";
+import {InstanceLink, InstanceToken} from "../contracts";
 
-type InstanceToken = string | symbol | Type<any> | IAbstract<any> | Function;
 type HostCollection = 'providers' | 'controllers' | 'injectables' | 'adapters';
-
-export interface InstanceLink<T = any> {
-    token: InstanceToken;
-    wrapperRef: InstanceWrapper<T>;
-    collection: Map<any, InstanceWrapper>;
-    moduleId: string;
-}
 
 export class InstanceLinksHost {
     private readonly instanceLinks = new Map<InstanceToken, InstanceLink[]>();

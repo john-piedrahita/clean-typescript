@@ -16,24 +16,15 @@ import {
 import {Module} from './module';
 import {INQUIRER} from './inquirer';
 import {STATIC_CONTEXT} from './constants';
-import {Controller, InjectableInterface, Type} from '../contracts';
+import {
+    Controller,
+    IInjectorDependencyContext,
+    InjectableInterface,
+    InjectorDependency,
+    IPropertyDependency,
+    Type
+} from '../contracts';
 import {RuntimeException, UndefinedDependencyException, UnknownDependenciesException} from '../exceptions';
-
-export type InjectorDependency = Type<any> | Function | string | symbol;
-
-export interface IPropertyDependency {
-    key: string;
-    name: InjectorDependency;
-    isOptional?: boolean;
-    instance?: any;
-}
-
-export interface IInjectorDependencyContext {
-    key?: string | symbol;
-    name?: string | symbol;
-    index?: number;
-    dependencies?: InjectorDependency[];
-}
 
 export class Injector {
 

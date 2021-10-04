@@ -1,11 +1,5 @@
 import { ModuleTokenFactory } from './module-token-factory';
-import {IDynamicModule, Type} from "../contracts";
-
-export interface ModuleFactory {
-  type: Type<any>;
-  token: string;
-  dynamicMetadata?: Partial<IDynamicModule>;
-}
+import {IDynamicModule, ModuleFactory, Type} from "../contracts";
 
 export class ModuleCompiler {
   constructor(private readonly moduleTokenFactory = new ModuleTokenFactory()) {}
