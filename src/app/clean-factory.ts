@@ -3,7 +3,7 @@ import {IHttpServer, ICleanApplication, ICleanApplicationContextOptions, ICleanA
 import {AbstractHttpAdapter} from "../adapters";
 import {ApplicationConfig} from "./application-config";
 import {InstanceLoader, CleanContainer} from "../ioc";
-import {CleanApplication} from "./nest-application";
+import {CleanApplication} from "./clean-application";
 import {MetadataScanner} from "./metadata-scanner";
 import {DependenciesScanner} from "./scanner";
 import {loadAdapter, rethrow} from "../helpers";

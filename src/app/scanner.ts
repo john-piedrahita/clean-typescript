@@ -22,7 +22,7 @@ import {
 } from "../utils";
 import {CircularDependencyException, InvalidModuleException, UndefinedModuleException} from "../exceptions";
 import {getClassScope} from "../helpers";
-import {APP_FILTER, APP_INTERCEPTOR, APP_PIPE} from "./constants";
+import {APP_FILTER, APP_INTERCEPTOR, APP_HANDLER} from "./constants";
 
 interface ApplicationProviderWrapper {
   moduleKey: string;
@@ -376,7 +376,7 @@ export class DependenciesScanner {
     return {
       [APP_INTERCEPTOR]: (interceptor: ICleanInterceptor) =>
         this.applicationConfig.addGlobalInterceptor(interceptor),
-      [APP_PIPE]: (handler: IHandlerTransform) =>
+      [APP_HANDLER]: (handler: IHandlerTransform) =>
         this.applicationConfig.addGlobalHandler(handler),
       [APP_FILTER]: (filter: IExceptionFilter) =>
         this.applicationConfig.addGlobalFilter(filter),
@@ -387,7 +387,7 @@ export class DependenciesScanner {
     return {
       [APP_INTERCEPTOR]: (interceptor: InstanceWrapper<ICleanInterceptor>) =>
         this.applicationConfig.addGlobalRequestInterceptor(interceptor),
-      [APP_PIPE]: (handler: InstanceWrapper<IHandlerTransform>) =>
+      [APP_HANDLER]: (handler: InstanceWrapper<IHandlerTransform>) =>
         this.applicationConfig.addGlobalRequestPipe(handler),
       [APP_FILTER]: (filter: InstanceWrapper<IExceptionFilter>) =>
         this.applicationConfig.addGlobalRequestFilter(filter),

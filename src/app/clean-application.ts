@@ -1,6 +1,6 @@
 import {iterate} from "iterare";
 import {platform} from "os";
-import {CleanApplicationContext} from "./nest-application-context";
+import {CleanApplicationContext} from "./clean-application-context";
 import {
   CorsOptions,
   CorsOptionsDelegate, IExceptionFilter,
