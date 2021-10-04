@@ -1,6 +1,7 @@
+import {Module} from "../ioc";
 import {RuntimeException} from "./runtime.exception";
-import {IInjectorDependencyContext, Module} from "../ioc";
 import {UNKNOWN_DEPENDENCIES_MESSAGE} from "./messages";
+import {IInjectorDependencyContext} from "../contracts";
 
 export class UndefinedDependencyException extends RuntimeException {
   constructor(type: string, undefinedDependencyContext: IInjectorDependencyContext, module?: Module) {

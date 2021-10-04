@@ -1,7 +1,6 @@
+import {Module} from "../ioc";
 import {isNil, isSymbol} from "../utils";
-import {ForwardReference, Type} from "../contracts";
-import {InjectorDependency, IInjectorDependencyContext, Module} from "../ioc";
-
+import {ForwardReference, IInjectorDependencyContext, InjectorDependency, Type} from "../contracts";
 
 const getInstanceName = (instance: unknown): string => {
   if ((instance as ForwardReference)?.forwardRef) return (instance as ForwardReference).forwardRef()?.name;
