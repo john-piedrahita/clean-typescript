@@ -1,4 +1,5 @@
 export * from './abstract.interface'
+export * from './application-provider-wrapper.interface'
 export * from './arguments-host.interface'
 export * from './controller.interface'
 export * from './cors-options.interface'

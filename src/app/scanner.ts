@@ -1,6 +1,5 @@
 import {iterate} from "iterare";
 import {
-  IAbstract,
   IClassProvider, Controller,
   IDynamicModule, IExceptionFilter, IExistingProvider, IFactoryProvider,
   ForwardReference,
@@ -8,7 +7,8 @@ import {
   IHandlerTransform,
   Provider,
   Scope,
-  Type, IValueProvider, ICleanInterceptor
+  Type, IValueProvider, ICleanInterceptor,
+  IApplicationProviderWrapper
 } from "../contracts";
 import {InstanceWrapper, Module, ModulesContainer, CleanContainer} from "../ioc";
 import {MetadataScanner} from "./metadata-scanner";
@@ -24,16 +24,9 @@ import {CircularDependencyException, InvalidModuleException, UndefinedModuleExce
 import {getClassScope} from "../helpers";
 import {APP_FILTER, APP_INTERCEPTOR, APP_HANDLER} from "./constants";
 
-interface ApplicationProviderWrapper {
-  moduleKey: string;
-  providerKey: string;
-  type: string | symbol | Type<any> | IAbstract<any> | Function;
-  scope?: Scope;
-}
-
 export class DependenciesScanner {
 
-  private readonly applicationProvidersApplyMap: ApplicationProviderWrapper[] = [];
+  private readonly applicationProvidersApplyMap: IApplicationProviderWrapper[] = [];
 
   constructor(
     private readonly container: CleanContainer,
