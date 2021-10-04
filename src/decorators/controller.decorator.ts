@@ -3,12 +3,7 @@ import {
     PATH_METADATA,
     SCOPE_OPTIONS_METADATA, isString, isUndefined
 } from '../utils';
-import {ScopeOptions} from '../contracts';
-
-export interface ControllerOptions extends ScopeOptions {
-    path?: string | string[];
-    host?: string | string[];
-}
+import {ControllerOptions} from "../contracts";
 
 export function Mapping(): ClassDecorator;
 
