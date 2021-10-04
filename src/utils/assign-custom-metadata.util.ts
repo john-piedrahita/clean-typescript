@@ -1,6 +1,6 @@
+import { ParamData } from '../decorators';
 import { CUSTOM_ROUTE_AGRS_METADATA } from './constants';
-import { ParamData, IRouteParamMetadata } from '../decorators';
-import { IHandlerTransform, Type, CustomParamFactory } from '../contracts';
+import {IHandlerTransform, Type, CustomParamFactory, IRouteParamMetadata} from '../contracts';
 
 export function assignCustomParameterMetadata(
   args: Record<number, IRouteParamMetadata>, paramType: number | string, index: number,

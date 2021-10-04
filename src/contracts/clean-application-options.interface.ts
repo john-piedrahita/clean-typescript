@@ -3,7 +3,7 @@ import {
   CorsOptionsDelegate,
 } from './cors-options.interface';
 import { HttpsOptions } from './https-options.interface';
-import { ICleanApplicationContextOptions } from './nest-application-context-options.interface';
+import { ICleanApplicationContextOptions } from './clean-application-context-options.interface';
 
 export interface ICleanApplicationOptions extends ICleanApplicationContextOptions {
 

@@ -1,18 +1,9 @@
 import {Logger} from "../services";
-
-const MISSING_REQUIRED_DEPENDENCY = (
-  defaultPlatform: string,
-  transport: string,
-) =>
-  `No driver (${transport}) has been selected. In order to take advantage of the default driver, please, ensure to install the "${defaultPlatform}" package ($ npm install ${defaultPlatform}).`;
+import {MISSING_REQUIRED_DEPENDENCY} from "./messages";
 
 const logger = new Logger('PackageLoader');
 
-export function loadAdapter(
-  defaultPlatform: string,
-  transport: string,
-  loaderFn?: Function,
-) {
+export function loadAdapter(defaultPlatform: string, transport: string, loaderFn?: Function) {
   try {
     return loaderFn ? loaderFn() : require(defaultPlatform);
   } catch (e) {

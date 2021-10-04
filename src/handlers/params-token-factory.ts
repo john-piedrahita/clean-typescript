@@ -2,7 +2,6 @@ import {Paramtype} from "../contracts";
 import { RouteParamTypes } from '../enums';
 
 export class ParamsTokenFactory {
-
   public exchangeEnumForString(type: RouteParamTypes): Paramtype {
     switch (type) {
       case RouteParamTypes.BODY:

@@ -1,28 +1,19 @@
+import {ContextUtils} from './context-utils';
+import {ExternalErrorProxy} from './external-proxy';
+import {HandlerMetadataStorage} from './handler-metadata-storage';
 import {ExternalExceptionFilterContext} from '../exceptions';
 import {STATIC_CONTEXT, CleanContainer, IContextId, Module, ModulesContainer} from '../ioc';
 import {InterceptorsConsumer, InterceptorsContextCreator} from '../interceptors';
 import {HandlersConsumer, HandlersContextCreator} from '../handlers';
-import {ContextUtils, IParamPropertiesContext} from './context-utils';
-import {ExternalErrorProxy} from './external-proxy';
-import {HandlerMetadataStorage} from './handler-metadata-storage';
 import {CUSTOM_ROUTE_AGRS_METADATA, isEmpty, isFunction} from '../utils';
 import {
   ContextType,
   Controller,
   IHandlerTransform,
   ParamsMetadata,
-  IExternalHandlerMetadata
+  IExternalHandlerMetadata,
+  IParamPropertiesContext, IParamsFactory, IExternalContextOptions
 } from '../contracts';
-import {ParamData} from "../decorators";
-
-export interface IParamsFactory {
-  exchangeKeyForValue(type: number, data: ParamData, args: any): any;
-}
-
-export interface IExternalContextOptions {
-  interceptors?: boolean;
-  filters?: boolean;
-}
 
 export class ExternalContextCreator {
   private readonly contextUtils = new ContextUtils();

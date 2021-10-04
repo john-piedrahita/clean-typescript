@@ -381,7 +381,7 @@ export class DependenciesScanner {
       [APP_INTERCEPTOR]: (interceptor: InstanceWrapper<ICleanInterceptor>) =>
         this.applicationConfig.addGlobalRequestInterceptor(interceptor),
       [APP_HANDLER]: (handler: InstanceWrapper<IHandlerTransform>) =>
-        this.applicationConfig.addGlobalRequestPipe(handler),
+        this.applicationConfig.addGlobalRequestHandler(handler),
       [APP_FILTER]: (filter: InstanceWrapper<IExceptionFilter>) =>
         this.applicationConfig.addGlobalRequestFilter(filter),
     };

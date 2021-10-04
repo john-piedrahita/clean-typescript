@@ -4,18 +4,9 @@ import {
   isNil, isString
 } from '../utils';
 import { RouteParamTypes } from '../enums';
-import {IHandlerTransform, Type} from '../contracts';
+import {IHandlerTransform, IResponseDecoratorOptions, IRouteParamMetadata, Type} from '../contracts';
 
 export type ParamData = object | string | number;
-
-export interface IResponseDecoratorOptions {
-  passThrough: boolean;
-}
-
-export interface IRouteParamMetadata {
-  index: number;
-  data?: ParamData;
-}
 
 export function assignMetadata<P = any, A = any>(args: A, paramType: P, index: number, data?: ParamData, ...handlers: (Type<IHandlerTransform> | IHandlerTransform)[]) {
   return {
@@ -60,10 +51,6 @@ export const Response: (options?: IResponseDecoratorOptions,) => ParameterDecora
   }
   return createRouteParamDecorator(RouteParamTypes.RESPONSE)()(target, key, index);
 };
-
-export const Next: () => ParameterDecorator = createRouteParamDecorator(RouteParamTypes.NEXT);
-
-export const Headers: (property?: string) => ParameterDecorator = createRouteParamDecorator(RouteParamTypes.HEADERS);
 
 export function Query(): ParameterDecorator;
 

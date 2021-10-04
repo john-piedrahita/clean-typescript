@@ -1,8 +1,6 @@
+import {ScopeOptions} from "../contracts";
 import {SCOPE_OPTIONS_METADATA} from "../utils";
-import {ScopeOptions, Type} from "../contracts";
 
-export type ServicesOptions = ScopeOptions;
-
-export function Service(options?: ServicesOptions): ClassDecorator {
+export function Service(options?: ScopeOptions): ClassDecorator {
     return (target: object) => Reflect.defineMetadata(SCOPE_OPTIONS_METADATA, options, target);
 }

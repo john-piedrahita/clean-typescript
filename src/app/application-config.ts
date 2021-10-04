@@ -62,11 +62,11 @@ export class ApplicationConfig {
     return this.globalRequestInterceptors;
   }
 
-  public addGlobalRequestPipe(wrapper: InstanceWrapper<IHandlerTransform>) {
+  public addGlobalRequestHandler(wrapper: InstanceWrapper<IHandlerTransform>) {
     this.globalRequestHandlers.push(wrapper);
   }
 
-  public getGlobalRequestPipes(): InstanceWrapper<IHandlerTransform>[] {
+  public getGlobalRequestHandler(): InstanceWrapper<IHandlerTransform>[] {
     return this.globalRequestHandlers;
   }
 

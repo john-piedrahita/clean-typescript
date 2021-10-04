@@ -2,7 +2,7 @@ import {
   CorsOptions,
   CorsOptionsDelegate,
 } from './cors-options.interface';
-import { ICleanInterceptor } from './nest-interceptor.interface';
+import { ICleanInterceptor } from './clean-interceptor.interface';
 import {IExceptionFilter, IHttpServer, IHandlerTransform, ICleanApplicationContext} from './index';
 
 export interface ICleanApplication extends ICleanApplicationContext {

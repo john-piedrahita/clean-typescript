@@ -38,10 +38,7 @@ export class BaseExceptionFilter<T = any> implements IExceptionFilter<T> {
 
     applicationRef.reply(host.getArgByIndex(1), body, body.statusCode);
     if (this.isExceptionObject(exception)) {
-      return BaseExceptionFilter.logger.error(
-        exception.message,
-        exception.stack,
-      );
+      return BaseExceptionFilter.logger.error(exception.message, exception.stack);
     }
     return BaseExceptionFilter.logger.error(exception);
   }

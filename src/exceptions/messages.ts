@@ -25,7 +25,7 @@ export const UNKNOWN_DEPENDENCIES_MESSAGE = (type: string | symbol, unknownDepen
   const potentialSolutions = `\n
 Potential solutions:
 - If ${dependencyName} is a provider, is it part of the current ${moduleName}?
-- If ${dependencyName} is exported from a separate @Module, is that module imported within ${moduleName}?
+- If ${dependencyName} is exported from a separate @Container, is that module imported within ${moduleName}?
   @Container({
     imports: [ /* the Module containing ${dependencyName} */ ]
   })
@@ -57,7 +57,7 @@ Scope [${stringifyScope(scope)}]
   `;
 
 export const INVALID_MODULE_MESSAGE = (parentModule: any, index: number, scope: any[]) => {
-  const parentModuleName = parentModule?.name || 'module';
+  const parentModuleName = parentModule?.name || 'container';
 
   return `Clean cannot create the ${parentModuleName} instance.
 Received an unexpected value at index [${index}] of the ${parentModuleName} "imports" array. 
@@ -66,7 +66,7 @@ Scope [${stringifyScope(scope)}]`;
 };
 
 export const UNDEFINED_MODULE_MESSAGE = (parentModule: any, index: number, scope: any[]) => {
-  const parentModuleName = parentModule?.name || 'module';
+  const parentModuleName = parentModule?.name || 'container';
 
   return `Clean cannot create the ${parentModuleName} instance.
 The module at index [${index}] of the ${parentModuleName} "imports" array is undefined.
@@ -95,6 +95,6 @@ export const INVALID_CLASS_SCOPE_MESSAGE = (text: TemplateStringsArray, name: st
     name || 'This class'
   } is marked as a scoped provider. Request and transient-scoped providers can't be used in combination with "get()" method. Please, use "resolve()" instead.`;
 
-export const UNKNOWN_REQUEST_MAPPING = `An invalid controller has been detected. Perhaps, one of your controllers is missing @Controller() decorator.`;
+export const UNKNOWN_REQUEST_MAPPING = `An invalid controller has been detected. Perhaps, one of your controllers is missing @CMapping() decorator.`;
 
 export const INVALID_EXCEPTION_FILTER = `Invalid exception filters (@UseFilters()).`;

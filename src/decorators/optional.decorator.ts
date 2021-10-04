@@ -1,22 +1,8 @@
-import {
+import {isUndefined,
   OPTIONAL_DEPS_METADATA,
   OPTIONAL_PROPERTY_DEPS_METADATA,
-} from '../utils/constants';
-import { isUndefined } from '../utils/shared.utils';
+} from '../utils';
 
-/**
- * Parameter decorator for an injected dependency marking the
- * dependency as optional.
- *
- * For example:
- * ```typescript
- * constructor(@Optional() @Inject('HTTP_OPTIONS')private readonly httpClient: T) {}
- * ```
- *
- * @see [Optional providers](https://docs.nestjs.com/providers#optional-providers)
- *
- * @publicApi
- */
 export function Optional() {
   return (target: object, key: string | symbol, index?: number) => {
     if (!isUndefined(index)) {
@@ -24,15 +10,7 @@ export function Optional() {
       Reflect.defineMetadata(OPTIONAL_DEPS_METADATA, [...args, index], target);
       return;
     }
-    const properties =
-      Reflect.getMetadata(
-        OPTIONAL_PROPERTY_DEPS_METADATA,
-        target.constructor,
-      ) || [];
-    Reflect.defineMetadata(
-      OPTIONAL_PROPERTY_DEPS_METADATA,
-      [...properties, key],
-      target.constructor,
-    );
+    const properties = Reflect.getMetadata(OPTIONAL_PROPERTY_DEPS_METADATA, target.constructor) || [];
+    Reflect.defineMetadata(OPTIONAL_PROPERTY_DEPS_METADATA, [...properties, key], target.constructor);
   };
 }

@@ -3,7 +3,7 @@ import {
   CorsOptions,
   CorsOptionsDelegate,
 } from './cors-options.interface';
-import { ICleanApplicationOptions } from './nest-application-options.interface';
+import { ICleanApplicationOptions } from './clean-application-options.interface';
 
 export type ErrorHandler<T = any, R = any> = (error: any, req: T, res: R, next?: Function) => any;
 export type RequestHandler<T = any, R = any> = (req: T, res: R, next?: Function) => any;

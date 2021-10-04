@@ -38,9 +38,12 @@ export class InterceptorsContextCreator extends ContextCreator {
   public getInterceptorInstance(interceptor: Function | ICleanInterceptor, contextId = STATIC_CONTEXT, inquirerId?: string): ICleanInterceptor | null {
     const isObject = (interceptor as ICleanInterceptor).intercept;
     if (isObject) return interceptor as ICleanInterceptor;
+
     const instanceWrapper = this.getInstanceByMetaType(interceptor);
+
     if (!instanceWrapper) return null;
     const instanceHost = instanceWrapper.getInstanceByContextId(contextId, inquirerId);
+
     return instanceHost && instanceHost.instance;
   }
 

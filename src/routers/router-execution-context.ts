@@ -21,17 +21,14 @@ import {
   IRedirectResponse,
   RouterResponseController,
 } from './router-response-controller';
-import {ContextType, Controller, IHttpServer, IHandlerTransform, IRouteParamsFactory} from "../contracts";
-import {ParamData, IRouteParamMetadata} from "../decorators";
-
-
-export interface IParamProperties {
-  index: number;
-  type: RouteParamTypes | string;
-  data: ParamData;
-  handlers: IHandlerTransform[];
-  extractValue: <T, R>(req: T, res: R, next: Function) => any;
-}
+import {
+  ContextType,
+  Controller,
+  IHttpServer,
+  IHandlerTransform,
+  IRouteParamsFactory,
+  IRouteParamMetadata, IParamProperties
+} from "../contracts";
 
 export class RouterExecutionContext {
   private readonly handlerMetadataStorage = new HandlerMetadataStorage();

@@ -1,5 +1,5 @@
 import { IContextId } from '../ioc';
-import {IParamProperties} from "../routers";
+import {IParamProperties} from "./param-properties.interface";
 
 type ParamPropertiesWithMetaType<T = any> = IParamProperties & { metaType?: T };
 

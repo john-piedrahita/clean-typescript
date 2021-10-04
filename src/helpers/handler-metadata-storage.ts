@@ -1,6 +1,5 @@
 import { CONTROLLER_ID_KEY, IContextId } from '../ioc';
-import { IParamPropertiesContext } from './context-utils';
-import {Controller, Type} from "../contracts";
+import {Controller, Type, IParamPropertiesContext} from "../contracts";
 
 export const HANDLER_METADATA_SYMBOL = Symbol.for('handler_metadata:cache');
 

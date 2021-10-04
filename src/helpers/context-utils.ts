@@ -1,15 +1,6 @@
-import {ParamData} from "../decorators";
 import {ExecutionContextHost} from './execution-context-host';
-import {ContextType, Controller, IHandlerTransform, Type} from '../contracts';
+import {ContextType, Controller, IParamPropertiesContext, Type} from '../contracts';
 import {isFunction, PARAMTYPES_METADATA, RESPONSE_PASSTHROUGH_METADATA} from '../utils';
-
-export interface IParamPropertiesContext<T = any, IExtractor extends Function = any> {
-  index: number;
-  type: T | string;
-  data: ParamData;
-  handlers: IHandlerTransform[];
-  extractValue: IExtractor;
-}
 
 export class ContextUtils {
 

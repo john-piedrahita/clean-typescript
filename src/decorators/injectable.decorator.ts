@@ -2,9 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { SCOPE_OPTIONS_METADATA } from '../utils';
 import { ScopeOptions, Type } from '../contracts';
 
-export type InjectableOptions = ScopeOptions;
-
-export function Injectable(options?: InjectableOptions): ClassDecorator {
+export function Injectable(options?: ScopeOptions): ClassDecorator {
   return (target: object) => {
     Reflect.defineMetadata(SCOPE_OPTIONS_METADATA, options, target);
   };

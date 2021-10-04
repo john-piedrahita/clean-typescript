@@ -1,12 +1,10 @@
+import {ContextType} from "../contracts";
 import { ExternalExceptionsHandler } from '../exceptions';
 import { ExecutionContextHost } from './execution-context-host';
-import {ContextType} from "../contracts";
 
 export class ExternalErrorProxy {
   public createProxy<TContext extends string = ContextType>(
-    targetCallback: (...args: any[]) => any,
-    exceptionsHandler: ExternalExceptionsHandler,
-    type?: TContext,
+    targetCallback: (...args: any[]) => any, exceptionsHandler: ExternalExceptionsHandler, type?: TContext
   ) {
     return async (...args: any[]) => {
       try {

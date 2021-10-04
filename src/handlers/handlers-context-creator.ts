@@ -27,12 +27,12 @@ export class HandlersContextCreator extends ContextCreator {
 
     return iterate(metadata)
       .filter((pipe: any) => pipe && (pipe.name || pipe.transform))
-      .map(pipe => this.getPipeInstance(pipe, contextId, inquirerId))
+      .map(pipe => this.getHandlerInstance(pipe, contextId, inquirerId))
       .filter(pipe => pipe && pipe.transform && isFunction(pipe.transform))
       .toArray() as R;
   }
 
-  public getPipeInstance(handler: Function | IHandlerTransform, contextId = STATIC_CONTEXT, inquirerId?: string): IHandlerTransform | null {
+  public getHandlerInstance(handler: Function | IHandlerTransform, contextId = STATIC_CONTEXT, inquirerId?: string): IHandlerTransform | null {
     const isObject = (handler as IHandlerTransform).transform;
     if (isObject) return handler as IHandlerTransform;
 
@@ -59,7 +59,7 @@ export class HandlersContextCreator extends ContextCreator {
     const globalPipes = this.config.getGlobalHandlers() as T;
     if (contextId === STATIC_CONTEXT && !inquirerId) return globalPipes;
 
-    const scopedPipeWrappers = this.config.getGlobalRequestPipes() as InstanceWrapper[];
+    const scopedPipeWrappers = this.config.getGlobalRequestHandler() as InstanceWrapper[];
     const scopedPipes = iterate(scopedPipeWrappers)
       .map(wrapper => wrapper.getInstanceByContextId(contextId, inquirerId))
       .filter(host => !!host)
