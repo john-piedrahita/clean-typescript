@@ -1,6 +1,6 @@
 {
   "name": "clean-ts",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Plugin for API Rest Full development, based on Clean Architecture, IoC and Dependency Injection.",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -26,6 +26,10 @@
   "license": "MIT",
   "bugs": {
     "url": " https://github.com/john-piedrahita/clean-typescript/issues"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.11.0"
   },
   "homepage": " https://github.com/john-piedrahita/clean-typescript#readme",
   "dependencies": {
