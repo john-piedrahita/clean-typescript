@@ -18,7 +18,7 @@ import {ExceptionsZone} from "../exceptions";
 
 export class CleanProjectStatic {
 
-  private readonly logger = new Logger('StartProjectServer', true);
+  private readonly logger = new Logger('Start project server', true);
   private abortOnError = true;
 
   public async create<T extends ICleanApplication = ICleanApplication>(module: any, options?: ICleanApplicationOptions): Promise<T>;

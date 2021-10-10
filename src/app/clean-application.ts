@@ -1,4 +1,3 @@
-import {iterate} from "iterare";
 import {platform} from "os";
 import {CleanApplicationContext} from "./clean-application-context";
 import {
@@ -21,12 +20,11 @@ import {MESSAGES} from "./constants";
 
 export class CleanApplication extends CleanApplicationContext
   implements ICleanApplication {
-  private readonly logger = new Logger(CleanApplication.name, true);
+  private readonly logger = new Logger("Clean application", true);
   private readonly middlewareModule = new MiddlewareModule();
   private readonly middlewareContainer = new MiddlewareContainer(this.container);
 
   private readonly routesResolver: IResolver;
-  private readonly microservices: any[] = [];
   private httpServer: any;
   private isListening = false;
 
@@ -46,13 +44,6 @@ export class CleanApplication extends CleanApplicationContext
 
   protected async dispose(): Promise<void> {
     this.httpAdapter && (await this.httpAdapter.close());
-
-    await Promise.all(
-      iterate(this.microservices).map(async microservice => {
-        microservice.setIsTerminated(true);
-        await microservice.close();
-      }),
-    );
   }
 
   public getHttpAdapter(): AbstractHttpAdapter {
@@ -196,24 +187,6 @@ export class CleanApplication extends CleanApplicationContext
     return this;
   }
 
-  public useStaticAssets(options: any): this;
-  public useStaticAssets(path: string, options?: any): this;
-  public useStaticAssets(pathOrOptions: any, options?: any): this {
-    this.httpAdapter.useStaticAssets &&
-      this.httpAdapter.useStaticAssets(pathOrOptions, options);
-    return this;
-  }
-
-  public setBaseViewsDir(path: string | string[]): this {
-    this.httpAdapter.setBaseViewsDir && this.httpAdapter.setBaseViewsDir(path);
-    return this;
-  }
-
-  public setViewEngine(engineOrOptions: any): this {
-    this.httpAdapter.setViewEngine &&
-      this.httpAdapter.setViewEngine(engineOrOptions);
-    return this;
-  }
   private host(): string | undefined {
     const address = this.httpServer.address();
     if (typeof address === 'string') {
