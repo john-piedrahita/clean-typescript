@@ -1,5 +1,10 @@
 import {Logger} from "../services";
-import {IHttpServer, ICleanApplication, ICleanApplicationContextOptions, ICleanApplicationOptions} from "../contracts";
+import {
+  IHttpServer,
+  ICleanApplication,
+  ICleanApplicationContextOptions,
+  ICleanApplicationOptions
+} from "../contracts";
 import {AbstractHttpAdapter} from "../adapters";
 import {ApplicationConfig} from "./application-config";
 import {InstanceLoader, CleanContainer} from "../ioc";
@@ -11,9 +16,9 @@ import {MESSAGES} from "./constants";
 import {isFunction, isNil} from "../utils";
 import {ExceptionsZone} from "../exceptions";
 
-export class CleanFactoryStatic {
+export class CleanProjectStatic {
 
-  private readonly logger = new Logger('CleanFactory', true);
+  private readonly logger = new Logger('StartProjectServer', true);
   private abortOnError = true;
 
   public async create<T extends ICleanApplication = ICleanApplication>(module: any, options?: ICleanApplicationOptions): Promise<T>;
@@ -149,4 +154,4 @@ export class CleanFactoryStatic {
   }
 }
 
-export const CleanFactory = new CleanFactoryStatic();
+export const StartProjectServer = new CleanProjectStatic();
