@@ -1,8 +1,6 @@
-import {Logger} from "../services";
 import {RouterProxy} from "./router-proxy";
 import {RouterExplorer} from "./router-explorer";
 import {HOST_METADATA, MODULE_PATH} from "../utils";
-import {CONTROLLER_MAPPING_MESSAGE} from "../helpers";
 import {ApplicationConfig, MetadataScanner} from "../app";
 import {Injector, InstanceWrapper, CleanContainer} from "../ioc";
 import {RouterExceptionFilters} from "./router-exception-filters";
@@ -10,7 +8,6 @@ import {Controller, IHttpServer, IResolver, Type} from "../contracts";
 import {BadRequestException, NotFoundException} from "../exceptions";
 
 export class RoutesResolver implements IResolver {
-  private readonly logger = new Logger(RoutesResolver.name, true);
   private readonly routerProxy = new RouterProxy();
   private readonly routerExceptionsFilter: RouterExceptionFilters;
   private readonly routerExplorer: RouterExplorer;
@@ -52,7 +49,6 @@ export class RoutesResolver implements IResolver {
       const controllerName = metaType.name;
 
       paths.forEach(path => {
-        this.logger.log(CONTROLLER_MAPPING_MESSAGE(controllerName, this.routerExplorer.stripEndSlash(path)));
         this.routerExplorer.explore(instanceWrapper, moduleName, applicationRef, path, host);
       });
     });

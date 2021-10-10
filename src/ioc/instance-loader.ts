@@ -1,15 +1,12 @@
 import { Module } from './module';
-import {Logger} from "../services";
 import { Injector } from './injector';
 import { CleanContainer } from './container';
-import { MODULE_INIT_MESSAGE } from '../helpers';
 import { InternalCoreModule } from './internal-core-module';
 import {Controller, InjectableInterface} from "../contracts";
 
 export class InstanceLoader {
 
   private readonly injector = new Injector();
-  private readonly logger = new Logger(InstanceLoader.name, true);
 
   constructor(private readonly container: CleanContainer) {}
 
@@ -37,7 +34,7 @@ export class InstanceLoader {
         await this.createInstancesOfControllers(module);
 
         const { name } = module.metaType;
-        this.isModuleWhitelisted(name) && this.logger.log(MODULE_INIT_MESSAGE`${name}`);
+        this.isModuleWhitelisted(name);
       }),
     );
   }
